@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION! Shutting down...');
@@ -9,6 +10,14 @@ process.on('uncaughtException', (err) => {
 
 dotenv.config({ path: './config.env' });
 const app = require('./app');
+
+app.use(
+  cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  }),
+);
 
 const DB = process.env.DATABASE.replace(
   '<PASSWORD>',
