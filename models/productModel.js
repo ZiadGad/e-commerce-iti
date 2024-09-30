@@ -22,6 +22,32 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  ratingAverage: {
+    type: Number,
+    default: 0,
+    min: [0, 'Rating must be above 0'],
+    max: [5, 'Rating must be below 5'],
+  },
+  ratingCount: {
+    type: Number,
+    default: 0,
+  },
+  ratingSum: {
+    type: Number,
+    default: 0,
+    select: false,
+  },
+});
+
+productSchema.pre('save', function (next) {
+  if (this.ratingCount > 0) {
+    this.ratingAverage = parseFloat(
+      (this.ratingSum / this.ratingCount).toFixed(2),
+    );
+  } else {
+    this.ratingAverage = 0;
+  }
+  next();
 });
 
 productSchema.pre('save', function (next) {

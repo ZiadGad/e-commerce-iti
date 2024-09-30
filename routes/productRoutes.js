@@ -16,4 +16,6 @@ router
   .patch(productController.updateProduct)
   .delete(productController.deleteProduct);
 
+router.patch('/rate/:id', productController.updateProductRating);
+
 module.exports = router;

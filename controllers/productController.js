@@ -76,3 +76,26 @@ exports.deleteProduct = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+// Update product rating and calculate new average
+exports.updateProductRating = catchAsync(async (req, res, next) => {
+  const { newRating } = req.body;
+  const id = req.params.id;
+  const product = await Product.findById(id);
+
+  if (!product) {
+    return next(new AppError('No product found with that ID', 404));
+  }
+
+  product.ratingSum += newRating;
+  product.ratingCount += 1;
+
+  await product.save();
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      product,
+    },
+  });
+});
