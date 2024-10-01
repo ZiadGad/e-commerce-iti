@@ -1,0 +1,12 @@
+.container {
+    padding: 20px;
+  }
+  
+  .img-fluid {
+    border: 1px solid #e3e3e3; /* Light border around the image */
+  }
+  
+  .btn-danger {
+    margin-top: 20px;
+  }
+  

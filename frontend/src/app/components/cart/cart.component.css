@@ -1,0 +1,22 @@
+.cart{
+    min-height: 81vh;
+}
+@media (max-width: 576px) {
+    .cart table {
+      font-size: 0.8rem; /* Smaller font size for mobile */
+    }
+  
+    .cart img {
+      width: 40px; /* Smaller image for mobile */
+    }
+  
+    .cart .btn {
+      padding: 0.25rem 0.5rem; /* Smaller button padding */
+    }
+  
+    .cart p {
+      font-size: 1rem; /* Smaller text for total price */
+    }
+  }
+  
+  

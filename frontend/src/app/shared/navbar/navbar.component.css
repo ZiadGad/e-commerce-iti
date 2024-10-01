@@ -1,0 +1,11 @@
+.navbar-brand img {
+  max-height: 40px;
+}
+
+.nav-link {
+  padding: 10px;
+  font-weight: bold;
+}
+nav.navbar {
+  background: linear-gradient(45deg, #343a40, #007bff);
+}

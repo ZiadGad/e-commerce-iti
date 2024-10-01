@@ -1,0 +1,73 @@
+<div class="max-w-3xl mx-auto p-4 cart">
+    <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
+  
+    <div *ngIf="cartItems.length === 0" class="alert alert-warning" role="alert">
+      Your cart is currently empty. Start adding items!
+    </div>
+  
+    <div *ngIf="cartItems.length > 0" class="table-responsive">
+      <table class="table table-bordered mx-auto">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems">
+            <td class="d-flex align-items-center">
+              <img [src]="item.product.images[0]" alt="{{ item.product.title }}" class="img-thumbnail me-2" style="width: 50px; height: auto;" />
+              {{ item.product.title }}
+            </td>
+            <td>
+              <button (click)="updateQuantity(item._id, item.quantity - 1)" class="btn btn-light" [disabled]="item.quantity <= 1">-</button>
+              {{ item.quantity }}
+              <button (click)="updateQuantity(item._id, item.quantity + 1)" class="btn btn-light">+</button>
+            </td>
+            <td>{{ item.product.price | currency }}</td>
+            <td>{{ (item.product.price * item.quantity) | currency }}</td>
+            <td>
+              <button (click)="removeFromCart(item._id)" class="btn btn-danger">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-right fw-bold h3">Total Price: {{ totalPrice | currency }}</p>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+

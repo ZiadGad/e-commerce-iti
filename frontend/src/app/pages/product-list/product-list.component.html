@@ -1,0 +1,41 @@
+<div class="container">
+  <h3 class="text-center mt-5 mb-5"><ins>Our Products</ins></h3>
+  <div class="row mb-4">
+    <div class="col-12 col-md-10">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()"
+        placeholder="Search for products..."
+        class="form-control mb-2"
+      />
+    </div>
+    <div class="col-12 col-md-2 d-flex align-items-end pb-5">
+      <select
+        class="form-select"
+        (change)="onSortChange($event)"
+        style="width: auto"
+      >
+        <option value="">Sort by Price</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Message for no results -->
+  <div *ngIf="noResults" class="no">
+    <p class="text-danger text-center h4">
+      No products found matching "{{ searchQuery }}".
+    </p>
+  </div>
+
+  <div class="row">
+    <div
+      class="col-12 col-sm-8 col-md-6 col-lg-4"
+      *ngFor="let product of filteredProducts"
+    >
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

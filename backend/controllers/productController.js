@@ -81,11 +81,15 @@ exports.deleteProduct = catchAsync(async (req, res, next) => {
 exports.updateProductRating = catchAsync(async (req, res, next) => {
   const { newRating } = req.body;
   const id = req.params.id;
-  const product = await Product.findById(id);
+
+  const product = await Product.findById(id).select('+ratingSum');
 
   if (!product) {
     return next(new AppError('No product found with that ID', 404));
   }
+
+  product.ratingSum = product.ratingSum || 0;
+  product.ratingCount = product.ratingCount || 0;
 
   product.ratingSum += newRating;
   product.ratingCount += 1;

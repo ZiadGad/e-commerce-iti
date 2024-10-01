@@ -1,0 +1,33 @@
+.card-img {
+  max-height: 60vh;
+  object-fit: cover;
+}
+.custom-badge {
+  background-color: #008181;
+}
+.navbar-brand img {
+  max-height: 40px;
+}
+
+.nav-link {
+  padding: 10px;
+  font-weight: bold;
+}
+nav.navbar {
+  background: linear-gradient(45deg, #343a40, #007bff);
+}
+.card-img-top {
+  object-fit: cover;
+  max-height: 40vh;
+}
+
+.card-disc {
+  width: 40vh;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pointer {
+  cursor: pointer;
+}

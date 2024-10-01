@@ -1,0 +1,34 @@
+<div class="landing-page">
+  <!-- Hero Section -->
+  <section class="hero-section text-center text-white bg-dark py-5">
+    <div class="container">
+      <img
+        src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1727049600&semt=ais_hybrid"
+        alt="Brand Logo"
+        class="d-inline-block align-text-top mb-5"
+      />
+      <h1 class="display-4">Welcome to Our E-Commerce Store</h1>
+      <p class="lead">Discover amazing products at unbeatable prices.</p>
+      <a routerLink="/products" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+
+  <!-- Featured Products Section -->
+  <section class="featured-products-section bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Featured Products</h2>
+      <div class="row">
+        <!-- Product Card -->
+        <div
+          class="col-12 col-sm-8 col-md-6 col-lg-4"
+          *ngFor="let product of featuredProducts"
+        >
+          <app-product-card [product]="product"></app-product-card>
+        </div>
+        <!-- Close .col-md-3 -->
+      </div>
+    </div>
+  </section>
+</div>

@@ -6,6 +6,23 @@ const catchAsync = require('../utils/catchAsync');
 exports.addToCart = catchAsync(async (req, res, next) => {
   const { productId, quantity } = req.body;
 
+  // Check if the product already exists in the cart
+  const existingCartItem = await Cart.findOne({ productId });
+
+  if (existingCartItem) {
+    // If it exists, update the quantity
+    existingCartItem.quantity += quantity; // You can also set a specific quantity if needed
+    await existingCartItem.save();
+
+    return res.status(200).json({
+      status: 'success',
+      data: {
+        cartItem: existingCartItem,
+      },
+    });
+  }
+
+  // If it doesn't exist, create a new cart item
   const cartItem = await Cart.create({ productId, quantity });
 
   const product = await Product.findById(productId);
