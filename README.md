@@ -54,3 +54,21 @@ Start the frontend application with the Angular CLI command:
 ```bash
 ng serve -o
 ```
+
+## Project Images
+
+#### home
+
+![](./Project%20Images/home.png)
+
+#### Product List
+
+![](./Project%20Images/product-list.png)
+
+#### Product Details
+
+![](./Project%20Images/product-details.png)
+
+#### Cart
+
+![](./Project%20Images/cart.png)
