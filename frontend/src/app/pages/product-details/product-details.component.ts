@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductDetailsComponent implements OnInit {
   product: any;
-  alertMessage: string = ''; // Property for alert message
-  alertVisible: boolean = false; // Property to manage alert visibility
+  alertMessage: string = '';
+  alertVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +37,6 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  // Method to submit product rating
   submitRating(rating: number): void {
     if (rating < 1 || rating > 5) {
       console.error('Invalid rating value:', rating);
@@ -60,25 +59,21 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  // Method to add product to cart
   addToCart(productId: string, quantity: number = 1): void {
     this.productService.addToCart(productId, quantity).subscribe({
       next: (response) => {
         console.log('Product added to cart:', response);
-        // Set alert message and make it visible
         this.alertMessage = 'Product added to cart successfully!';
         this.alertVisible = true;
       },
       error: (err) => {
         console.error('Error adding product to cart:', err);
-        // Set alert message and make it visible
         this.alertMessage = 'Failed to add product to cart. Please try again.';
         this.alertVisible = true;
       },
     });
   }
 
-  // Method to go back to the previous page
   goBack(): void {
     this.location.back();
   }

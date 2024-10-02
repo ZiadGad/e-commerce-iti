@@ -10,7 +10,6 @@ export class NotFoundComponent {
   constructor(private router: Router) {}
 
   goToHome() {
-    this.router.navigate(['/']); // Adjust the route according to your home path
+    this.router.navigate(['/']);
   }
 }
-

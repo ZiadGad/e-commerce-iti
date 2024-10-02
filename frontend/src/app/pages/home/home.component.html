@@ -1,5 +1,4 @@
 <div class="landing-page">
-  <!-- Hero Section -->
   <section class="hero-section text-center text-white bg-dark py-5">
     <div class="container">
       <img
@@ -13,21 +12,16 @@
     </div>
   </section>
 
-  <!-- Categories Section -->
-
-  <!-- Featured Products Section -->
   <section class="featured-products-section bg-light py-5">
     <div class="container">
       <h2 class="text-center mb-4">Featured Products</h2>
       <div class="row">
-        <!-- Product Card -->
         <div
           class="col-12 col-sm-8 col-md-6 col-lg-4"
           *ngFor="let product of featuredProducts"
         >
           <app-product-card [product]="product"></app-product-card>
         </div>
-        <!-- Close .col-md-3 -->
       </div>
     </div>
   </section>

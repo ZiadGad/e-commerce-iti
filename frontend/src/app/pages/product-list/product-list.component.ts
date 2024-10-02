@@ -18,14 +18,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-  // Pagination variables
-  currentPage: number = 1; // Default page
-  itemsPerPage: number = 10; // Items per page
   products: any[] = [];
   filteredProducts: any[] = [];
   searchQuery: string = '';
-  noResults: boolean = false; // Track no results
-  sortOrder: 'asc' | 'desc' | null = null; // Sorting order (null means no sorting)
+  noResults: boolean = false;
+  sortOrder: 'asc' | 'desc' | null = null;
 
   constructor(private productService: ProductService) {}
 
@@ -34,8 +31,8 @@ export class ProductListComponent implements OnInit {
       next: (data) => {
         this.products = data.data.products;
         this.filteredProducts = this.products;
-        this.sortProducts(); // Sort products initially
-        console.log('Filtered Products Length:', this.filteredProducts.length); //console.log
+        this.sortProducts();
+        console.log('Filtered Products Length:', this.filteredProducts.length);
       },
       error: (err) => console.log(err),
     });
@@ -46,15 +43,13 @@ export class ProductListComponent implements OnInit {
       product.title.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
 
-    // Check if there are no results
     this.noResults =
       this.filteredProducts.length === 0 && this.searchQuery !== '';
-    this.sortProducts(); // Re-sort after filtering
+    this.sortProducts();
   }
 
-  // Method to sort products by price
   sortProducts() {
-    if (this.sortOrder === null) return; // No sorting if sortOrder is null
+    if (this.sortOrder === null) return;
 
     this.filteredProducts.sort((a, b) => {
       const priceA = a.price || 0;
@@ -63,25 +58,18 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  // pagination
-  onPageChange(page: number) {
-    this.currentPage = page;
-  }
-
-  // Method to set sort order from dropdown
   onSortChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     const selectedSortOrder =
       target.value === 'asc' ? 'asc' : target.value === 'desc' ? 'desc' : null;
 
-    // Toggle sorting
     if (this.sortOrder === selectedSortOrder) {
-      this.sortOrder = null; // Reset sorting
-      target.value = ''; // Reset dropdown to default
-      this.filteredProducts = [...this.products]; // Reset to the original product list
+      this.sortOrder = null;
+      target.value = '';
+      this.filteredProducts = [...this.products];
     } else {
-      this.sortOrder = selectedSortOrder; // Update sort order
-      this.sortProducts(); // Sort after changing order
+      this.sortOrder = selectedSortOrder;
+      this.sortProducts();
     }
   }
 }

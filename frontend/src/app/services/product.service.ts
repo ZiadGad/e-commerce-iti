@@ -15,6 +15,7 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
+
   // getProducts(page: number): Observable<any> {
   //   return this.http.get(`${this.apiUrl}?limit=10&page=${page}`);
   // }
@@ -55,7 +56,6 @@ export class ProductService {
     return this.http.patch(`${this.cartUrl}/${cartItemId}`, { quantity });
   }
 
-  // Update product rating
   // Update product rating
   updateProductRating(productId: string, newRating: number): Observable<any> {
     const body = { newRating: newRating };
